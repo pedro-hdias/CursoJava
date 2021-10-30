@@ -1,2 +1,2 @@
-# CursoJava
-Minhas primeiras lições em Java
+# curso_java
+Minhas primeiras aulas em Java
