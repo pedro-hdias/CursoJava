@@ -1,0 +1,329 @@
+Aula 13 - 15/10/2021 - Hoje é dia do prefessoooooooorrrr
+http://t.me/TemAula
+
+curl -H "content-type:application/json" -X POST -d {\"numero\":1010,\"agencia\":1234,\"tipo\":2,\"saldo\":1000,\"titular\":{\"codigo\":3}} http://localhost:8080/contas
+
+https://frontend-validador-cpf.herokuapp.com/
+
+Bibliotecas para o Spring Boot
+Spring Web
+Developer Tools
+Spring Data JPA
+MySQL Driver
+
+Aula 12 - 14/10/2021 - A API sai? Sai sim senhor!!!
+http://t.me/TemAula
+
+
+Aula 11 - 13/10/2021 - Hoje o chicote estrala
+https://www.professorisidro.com.br/web.zip
+https://mvnrepository.com/repos/central - para curiosidade
+https://start.spring.io/
+
+
+
+
+
+Aula 10 - 08/10/2021 - Hoje é BD
+Aulas de BD
+https://youtu.be/G28hbOFOUIk
+https://youtu.be/Usc6rRlItIA
+https://youtu.be/PbSv6Ff83uY
+https://youtu.be/HZbr8fFJTbE
+https://youtu.be/KKBSbVU_rn0
+https://youtu.be/i-cjc3ZCekI
+
+
+scripts sql:
+create table tbl_departamento(
+codigo integer not null auto_increment primary key,
+nome varchar (50) not null
+);
+
+insert into tbl_departamento values(null, "informática");
+insert into tbl_departamento values(null, "games");
+insert into tbl_departamento values(null, "eletronicos");
+
+
+create table tbl_produto(
+id integer not null auto_increment primary key,
+descricao varchar(100) not null,
+preco double ,
+estoque integer,
+depto integer not null,
+constraint departamento foreign key(depto) references tbl_departamento(codigo)
+);
+insert into tbl_produto values (null, "computador topzera", 7800, 3, 1);
+insert into tbl_produto values (null, "super mario bross", 500, 1, 1);
+insert into tbl_produto values (null, "iphone 13 pro max", 10000, 1000, 3);
+delete from tbl_produto where id=2;
+insert into tbl_produto values (null, "super mario bross", 500, 1, 2);
+update tbl_produto set preco=12000 where id=3;
+select * from tbl_produto inner join tbl_departamento;
+select * from tbl_produto inner join tbl_departamento on tbl_produto.depto = tbl_departamento.codigo;
+
+https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-8.0.26.0.msi
+http://professorisidro.com.br/java.zip
+http://professorisidro.com.br/bd.zip
+https://docs.google.com/document/d/1P_DTLS26XZMjPJ-505fhRtnkNtUXZmW4CT_Jat68vyw/edit?usp=sharing
+
+
+
+Aula 08 - 06/10/2021 - E o Isidro ainda não comprou seu presente
+
+Vamos exercitar o conceito de classes Abstratas
+
+A empresa ACME que constrói casas com proteção antinuclear para o apocalipse zumbi está reformulando sua estrtura organizacional. Agora temos o seguinte organograma:
+
+Chefe
+FuncionarioHorista
+Empreiteiro
+Vendedor
+
+entretanto, todos são funcionários da empresa. Todo funcionário tem: 
+numeroFuncional: inteiro
+nome: String
+
+como funcionalidades obrigatórias, todo funcionário tem um método ABSTRATO chamado calcularSalario() que retorna um valor DOUBLE
+
+public abstract double calcularSalario();
+
+Quais são as informações específicas de cada funcionário?
+Chefe:
+- salarioBase - double
+- adicionalFuncao - double (aqui calcula-se um percentual)
+- beneficioTerno - double
+
+FuncionarioHorista
+- numeroHoras;
+- valorHora;
+
+Empreiteiro:
+- valorEmpreita
+
+Vendedor:
+- salarioBase
+- comissão (aqui também é um percentual)
+
+como calculamos cada salário de cada funcionário?
+
+Chefe:   salarioBase + salarioBase * adicionalFuncao / 100 + beneficioTerno
+FuncionarioHorista: valorHora * numeroHoras
+Empreiteiro: valorEmpreita
+Vendedor: salarioBase + salarioBase * comissao / 100
+
+
+Procedimento:
+- Criar um novo projeto (ProjetoACME)
+- criar 2 pacotes (core e front)
+- no pacote core, criar:
+     - uma classe abstrata Funcionário com os atributos descritos, construtor, getters e setters e o método abstrato "calcularSalario()"
+    -  uma classe para cada tipo de funcionário que tenhas seus respectivos atributos, construtor e a implementação do método calcularSalario
+
+- no pacote front, criar:
+    - uma classe principal chamada FolhaDePagamento que terá 6 variáveis do tipo Funcionário. Cada uma delas vai instanciar um tipo de funcionário (chefe, horista, empreiteiro ou vendedor). Aí você deve exibir o nome e o salário de cada um deles
+
+
+
+
+Aula 07 - 05/10/201 - Aula um dia após o aniversário do prof. Isidro
+
+Vamos exercitar Herança:
+Vamos criar um novo projeto para gerenciar as contas correntes. Agora teremos tanto conta corrente quanto conta especial. O que caracteriza uma conta-corrente?
+
+- numero da conta: inteiro
+- nome Titular: String
+- saldo: double
+
+o que temos de funcionalidades numa conta corrente ?
+- exibir
+- depositar(double valor) - somo ao saldo o valor informado (não retorna nada)
+- sacar(double valor) - retorna um valor booleano indicando se deu certo o saque ou não (se tem saldo disponível para ser debitado)
+
+E a conta especial? Tem tudo o que tem em conta corrente, mais uma informação:
+- limite: double
+
+e qual a diferença de comportamento/funcionalidades?
+uma conta corrente pode ter seu saldo negativo? Sim, desde que haja limite para isso
+portanto, a lógica da operação de saque é modificada na conta especial, levando em consideração, agora, não somente o saldo, mas o saldo somado com o limite
+
+Como fazer?
+Por partes:
+
+1 - defina a classe ContaCorrente, seus atributos (protected) e também seus métodos.
+2 - faça uma class Banco e teste a ContaCorrente (só para verificar se as operações estão funcionando corretamente)
+3 - aí sim, defina a classe ContaEspecial que amplia (herda) da classe ContaCorrente e tem seus métodos EXIBIR e SACAR redefinidos
+
+tanto a classe ContaCorrente, quanto a classe ContaEspecial precisam ter Construtures, getters e setters (além, claro, dos métodos para exibir, sacar e depositar)
+
+
+Aula 06 - 04/10/2021  - Aniversário do Professor Isidro que está aguradando seus presentes caros
+sugestões de presente: IPad dos bonitão, Iphone 13 Pro Max 1 Tb, MacBook dos top, Playstates 5, Apple Watch,  500 de miolo de acém, entre outros 
+
+Objetivo deste exercício:
+praticar Orientação a Objetos com os seguintes critérios
+- encapsulamento
+- construtor
+- pacotes / packages
+
+A IsidroCorp está expandindo suas atuações. Agora a IsidroCorp acaba de inaugurar a IsidroCorp Gas & Energy. Uma rede de postos de combustíveis, cujas bombas serão programadas em Java. Uma bomba de combustível possui as seguintes características:
+- Nome do combustível: String
+- preço por litro: double
+- quantidade de litros: double 
+- total a pagar: double
+
+além disso, quais funcionalidades podemos identificar numa bomba de combustível?
+-  abastecerPorLitros(double quantosLitros): neste método eu especifico o total de litros e para mim é calculado o valor total
+- abastecerPorValor(double total): neste método eu especifico o valor total a pagar, e calcula-se o total de litros
+- exibirRecibo(): String - retorna uma string contendo os dados da bomba
+
+Como deve ser implementado este exercício:
+- criar 2 pacotes
+pacote 1: model - e neste pacote deve estar a classe BombaDeCombustivel
+pacote 2: userinterface - aqui fica a classe principal Posto
+
+
+
+
+
+Aula 05 - 01/10/2021
+Exercício 1: Vamos implementar um Tipo de Dado Empregado como classe. Quais dados temos em um empregado?
+- nome: String
+- cargo: String
+- salário: double
+
+você também deverá implementar os atributos como PRIVATE e, portanto, cada atributo deve ter GETTERS e SETTERS
+Além disso, 2 métodos adicionais devem ser implementados:
+imprimir() -> gera uma série de prints com as informações do Empregado
+aumentarSalario(double percentual) -> esse método não retorna valor, ele simplesmente altera o valor do salário, acrescentando este percentual a ele
+
+Faça também uma classe que tem o método MAIN e declara 3 funcionários, exibe suas informações. Em seguida, realiza um aumento de salário para cada um deles
+e exibe as novas informações.
+
+
+Exercício2: Vamos fazer um sistema de controle de contas bancárias. Uma conta bancária tem as seguintes características (atributos)
+- numero - inteiro
+- agencia - inteiro
+- nomeTitular - Stringsys
+- cpfTitular - String
+- saldo - double
+
+vou precisar também de Getters e Setters e 3 métodos auxiliares
+- imprimir: ao invés de executar uma série de System.out.println, este método deve retornar uma STRING contendo todas as informações da conta concatenadas
+- depositar(double valor): não retorna nada, apenas soma ao saldo o valor passado no parâmetro
+- sacar(double valor): este método retorna um número inteiro, indicando: 1 - deu certo a operação de saque / 0 - deu erro (saldo é insuficiente)
+
+
+
+Aula 04 - 30/09/2021
+Extra: https://www.urionlinejudge.com.br/judge/pt/problems/view/1065
+
+
+
+Aula 03 - 29/09/2021
+
+https://www.professorisidro.com.br/manual-de-sobrevivencia-do-github/
+
+Aulas de Git x Github
+Aula 0
+https://www.youtube.com/watch?v=lVttxSVTVxs
+
+Aula 1
+https://www.youtube.com/watch?v=eP3axPadEnI
+
+Aula 2
+https://www.youtube.com/watch?v=h0q9KuJ2Ay0
+
+Aula 3
+https://www.youtube.com/watch?v=TK_eZHYr1hE
+
+Aula 4
+https://www.youtube.com/watch?v=atJ4vHzy_UQ
+
+
+Exercicio 1: Faça um programa java que exiba todos os valores PARES de 0 até 100
+Exercício 2: Faça um programa java que leia um valor N e exiba todos os ímpares de 1 até N
+Exercício 3: Faça um programa java que leia vários números e exiba cada número positivo digitado. Seu programa só pode parar quando o usuário digitar o valor 0. 
+Exercício 3a: Vamos simular um sistema de PDV. Você deverá ler preços de produtos e acumular estes preços dos produtos em um total da compra. O sistema só termina quando você digitar o preço do produto = -1. Ao final, exiba o total da compra
+Extra: https://www.urionlinejudge.com.br/judge/pt/problems/view/1114
+Extra: https://www.urionlinejudge.com.br/judge/pt/problems/view/1065
+
+
+aula de IF
+https://www.youtube.com/watch?v=kjdd1u6V2Fk&list=PLjcmNukBom6_uUcE6fdKXjOPh9XkSjA6D&index=4
+
+Aula de IF/Else/Switch
+https://www.youtube.com/watch?v=mQNbToeXy5k&list=PLjcmNukBom6_uUcE6fdKXjOPh9XkSjA6D&index=5
+
+Aula de repetições
+https://www.youtube.com/watch?v=ch6TeGj6W7c&list=PLjcmNukBom6_uUcE6fdKXjOPh9XkSjA6D&index=6
+
+Aula de exercícios
+https://www.youtube.com/watch?v=XtiShv6M04I&list=PLjcmNukBom6_uUcE6fdKXjOPh9XkSjA6D&index=7
+
+
+Aula 02 - 28/09/2021
+Exercicio 1: Considere que um automóvel tem autonomia de 14 km/l. Baseado nisso, faça um programa Java que recebe o tempo (em horas) de uma viagem e a velocidade que o automóvel teve. Ambas as informações servirão para você calcular a distância percorrida. Em seguida, calcule (considerando a autonomia do carro), quantos litros de combustíveis foram necessários nessa viagem.
+Método de resolução:
+Entrada: 2 variáveis DOUBLE para tempo e velocidade media
+Processamento: passo 1- calcular a distância (multiplica a velocidade e o tempo). Passo 2 - divide a distância por 14 para calcular o consumo
+Saída: Exibir o consumo
+
+Exercício 2: 
+Vamos simular um caixa eletrônico que precisa emitir cédulas para um saque:
+O caixa trabalha com cédulas (infinitas) de R$ 100,  R$ 50, R$ 20, R$ 5, R$ 1
+Você deve informar um valor inicial de saque (o valor é inteiro)
+A partir daí, o seu sistema de calcular quantas cédulas de cada valor e exibir as respectivas quantidades. Lembre-se que a idéia do caixa eletrônico é minimizar a quantidade de cédulas. Portanto, se um cliente deseja sacar R$ 100,00 o caixa eletrônico deve emitir apenas 1 cédula de R$ 100, ao invés de 2 de R$ 50 ou 5 de R$ 20 ou 20 de R$ 5 ou ainda 100 cédulas de R$ 1
+
+
+Exemplo:
+Entrada: valor do saque 378,00
+Saída: 
+3 cédulas de R$ 100,00
+1 cédula de R$ 50,00
+1 cédula de R$ 20,00
+1 cédula de R$ 5,00
+3 cédulas de R$ 1,00
+
+Exercicio 3: Faça um programa que leia duas notas bimestrais de um aluno, calcule sua média e imprima:
+ se média entre 9 e 10 aprovado com conceito A
+ se média entre 8 e 9 aprovado com conceito B
+ se média entre 6 e 8 aprovado com conceito C
+ se média entre 3 e 6 em exame
+ se média menor ou igual que 3 reprovado 
+
+
+Aula 01 - 27/09/2021
+
+Notas de aula:
+http://professorisidro.com.br/java.zip
+http://professorisidro.com.br/bd.zip
+
+Site do querido professor
+www.professorisidro.com.br
+
+Curso no Youtube (de grátis)
+https://www.youtube.com/watch?v=nbZ20SjOX9s&list=PLjcmNukBom6_uUcE6fdKXjOPh9XkSjA6D
+
+Desafio Javão da Massa (10 dias de exercícios de lógica de programação em Java)
+
+https://www.youtube.com/watch?v=M2QNrVlbtE0&list=PLjcmNukBom68Qaf_2JGkhzGR4q0cE9uYD
+
+GitHub do professor
+www.github.com/professorisidro
+https://github.com/professorisidro/IoT_library
+
+
+Insta do Professor
+www.instagram.com/professorisidro
+
+Grupo de Estudos: Tem Aula
+http://t.me/TemAula
+
+Atalhos do Eclipse
+- Para criar um novo projeto/classe: ALT SHIFT N
+- Para mudar entre as várias janelas do Eclipse: CTRL F7
+- Para executar um projeto: CTRL F11
+- Para salvar um único arquivo do editor: CTRL S
+- Para salvar todos os arquivos das abas do editor: CTRL SHIFT S
+- Para organizar a importação das bibliotecas: CTRL SHIFT O

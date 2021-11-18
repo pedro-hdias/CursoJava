@@ -1,0 +1,92 @@
+Criando Metodos
+
+Um método deve ser declarado dentro de uma classe. É definido com o nome do método, seguido por parênteses (). Java fornece alguns métodos pré-definidos, como , mas você também pode criar seus próprios métodos para executar determinadas ações:System.out.println()
+
+Exemplo Explicado
+
+myMethod() é o nome do método
+
+Static = significa que o método pertence à classe Principal e não a um objeto da classe Principal. 
+
+Void = significa que este método não tem um valor de retorno.
+
+Chame um método
+
+Para chamar um método em Java, escreva o nome do método seguido por dois parênteses () e um ponto e vírgula;
+
+No exemplo a seguir, é usado para imprimir um texto (a ação), quando é chamado:myMethod()
+
+Exemplo
+
+public class Main {
+  static void myMethod() {
+    System.out.println("I just got executed!");
+  }
+
+  public static void main(String[] args) {
+    myMethod();
+  }
+}
+
+
+Exemplo
+Um exemplo para demonstrar as diferenças entre e os métodos:staticpublic
+
+public class Main {
+  // Static method
+  static void myStaticMethod() {
+    System.out.println("Os métodos estáticos podem ser chamados sem criar objetos");
+  }
+
+  // Public method
+  public void myPublicMethod() {
+    System.out.println("Os métodos públicos devem ser chamados criando objetos");
+  }
+
+  // Main method
+  public static void main(String[] args) {
+    myStaticMethod(); // Chame o método estático
+    // myPublicMethod(); Chame o método público no objeto
+
+    Main myObj = new Main(); // Cria um objeto de Main
+    myObj.myPublicMethod(); // Chame o método público no objeto
+  }
+}
+
+Encapsulamento java
+
+Encapsulação
+O significado do Encapsulamentoé garantir que os dados "sensíveis" estão escondidos dos usuários. Para conseguir isso, você deve:
+
+declarar variáveis/atributos de classe como private
+fornecer público obter e definir métodos para acessar e atualizar o valor de uma variávelprivate
+
+Get and Set
+Você aprendeu no capítulo anterior que as variáveis só podem ser acessadas dentro da mesma classe (uma classe externa não tem acesso a ela). No entanto, é possível acessá-los se fornecermos métodos de obter e definir públicos.private
+
+O método retorna o valor variável, e o método define o valor.getset
+
+A sintaxe para ambos é que eles começam com ou , seguido pelo nome da variável, com a primeira letra em maiúsculas:getset
+
+Exemplo
+
+public class Person {
+  private String nome; // privado = acesso restrito
+  // Getter
+  public String getNome() {
+    return nome;
+  }
+
+  // Setter
+  public void setName(String novoNome) {
+    this.nome = novoNome;
+  }
+}
+
+Exemplo explicado
+O método retorna o valor da variável .getname
+
+O método pega um parâmetro () e atribui-o à variável. A palavra-chave é usada para se referir ao objeto atual.setnovoNome nome this
+
+No entanto, como a variável é declarada como , não podemos acessá-la de fora desta classe:nomeprivado
+

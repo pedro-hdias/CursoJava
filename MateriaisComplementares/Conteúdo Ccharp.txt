@@ -1,0 +1,56 @@
+Email do professor: paponciano@gmail.com
+Link da documentação oficial do C#: https://docs.microsoft.com/pt-br/dotnet/csharp/
+Link de download do DBeaver (Client de banco de dados, para se conectar em vários SGBDs diferentes): https://dbeaver.io/files/dbeaver-ce-latest-x86_64-setup.exe.
+Link de download do Visual Studio Code: https://code.visualstudio.com/download
+Link de download do .NET 5: https://dotnet.microsoft.com/download
+Link direto de download da Runtime x64 para Windows: https://dotnet.microsoft.com/download/dotnet/thank-you/runtime-5.0.11-windows-x64-installer
+Link de download e instalação da extensão C# para VSCode: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
+Link de download e instalação do GIT: https://git-scm.com/download/win
+
+Instruções necessárias para realização de primeito COMMIT e primeiro PUSH em sua máquina local usando GIT:
+git config user.name "SEU NOME COMPLETO"
+git config --global user.email "EMAIL DO REGISTRO GITHUB"
+
+
+Aula 01: 18/10/2021.
+Comando para criação de novo projeto: dotnet new console
+Executar o programa: dotnet run
+Lista de exercícios 01: https://docs.google.com/document/d/1-jN5RPx3qmzYEoHsn58IaymW9g4vD3jU/edit?usp=sharing&ouid=106172539052155617866&rtpof=true&sd=true
+Código fonte do overview do C#: https://wordpad.cc/CSharp_Itau_Overview
+
+Aula 02: 19/10/2021
+Código fonte do exercício 01: https://wordpad.cc/CSharp_Itau_Lista01_01
+Código fonte do exercício 02: https://wordpad.cc/CSharp_Itau_Lista01_02
+Código fonte do exercício 04: https://wordpad.cc/CSharp_Itau_Lista01_04
+
+Aula 03: 20/10/2021
+Código fonte de estruturas de repetição: https://wordpad.cc/CSharp_Itau_Loops_Listas
+Código fonte de classe: https://wordpad.cc/CSharp_Itau_POO
+
+Aula 04: 21/10/2021
+Instalação da extensão MySql.Data: https://www.nuget.org/packages/MySql.Data/
+
+Aula 05: 22/10/2021
+Código fonte para conexão da aplicação com banco de dados: https://wordpad.cc/CSharp_Itau_MySQLData_Classe_Produto
+Código fonte para conexão da aplicação com banco de dados: https://wordpad.cc/CSharp_Itau_MySQLData_Classe_Program
+
+Aula 06: 25/10/2021
+Código fonte base para realização da atividade prática: https://wordpad.cc/CSharp_Itau_Fonte_Base_Desafio01
+Enunciado da atividade prática:
+Construção de projeto para registrar vendas de produtos armazenados em uma tabela do banco de dados de nome produtos. A aplicação deverá ter as seguintes funções:
+1) Cadastrar Novo Produto
+2) Listar todos os produtos cadastrados
+3) Listar produto de acordo com o código informado
+4) Registrar venda, inserindo as seguintes informações:
+	a) Nome do cliente
+	b) ID do produto que será comprado
+	c) quantidade do produto que será comprado
+
+	Antes de registrar a venda, a aplicação deve verificar se existe estoque disponível do produto para realizar a venda. Se sim, a venda será registrada e o estoque debitado. Se não, uma mensagem de erro na tela será apresentada ao usuário.
+
+Repositório GitHub Projeto Vendas: https://github.com/paponciano/projetovendas
+
+Aula 08: 27/10/2021
+Repositório da API Contas Bancárias.API: 0
+https://github.com/paponciano/ContasBancarias.API
+https://github.com/paponciano/ContasBancarias.CLIENT
